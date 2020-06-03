@@ -43,8 +43,8 @@
                 return false;
             }
             MessageItem subscriptionConfirmationMessage = managerRoot.Settings.SubscriptionConfirmationMessage;
-            string serverUrl = WebUtil.GetServerUrl();
-            string str = _hostnameMappingService.GetPublicUrl(serverUrl, managerRoot) + "/sitecore%20modules/Web/EXM/ConfirmSubscription.aspx?";
+            string serverUrl = managerRoot.Settings.BaseURL;
+            string str = serverUrl + "/sitecore%20modules/Web/EXM/ConfirmSubscription.aspx?";
             str = str + GlobalSettings.ConfirmSubscriptionQueryStringKey + "=" + GetConfirmationKey(recipientListId, _contactService.GetIdentifier(contact), managerRoot);
             MailMessageItem mailMessageItem = subscriptionConfirmationMessage as MailMessageItem;
             if (mailMessageItem != null)
